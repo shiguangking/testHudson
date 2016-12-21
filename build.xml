@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
 <!-- WARNING: Eclipse auto-generated file.
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
@@ -21,6 +20,8 @@
         </fileset>  
     </path>  
   
+
+
     <!-- 1. 初始化工作，如创建目录等 -->  
     <target name="init">  
         <mkdir dir="${classes.dir}"/>  
@@ -64,9 +65,17 @@
         </jar>  
     </target>  
      <!--运行一下jar包，试试看效果-->  
-    <target name="run" depends="jar">  
-        <!--其实这里就是运行jar命令，注意fork一定加上，不然不起作用-->  
-        <java jar="${output.dir}/${jarname}" fork="true">  
-        </java>  
-    </target>  
+
+              	
+  <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask"/>         	
+	<target name="findbugs" depends="jar">
+	
+	    <findbugs home="${findbugs.home}"
+	              output="xml:withMessages"
+	              outputFile="findbugs.xml" >
+	      <auxClasspath path="${basedir}/lib/Regex.jar" />
+	      <sourcePath path="${basedir}/src/java" />
+	      <class location="${output.dir}/${jarname}" />
+	    </findbugs>
+	  </target>
 </project>
