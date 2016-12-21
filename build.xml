@@ -64,17 +64,17 @@
             </manifest>  
         </jar>  
     </target>  
-     <!--运行一下jar包，试试看效果-->  
+                <!--运行一下jar包，试试看效果-->  
+              <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask"/>         	
 
-              	
-  <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask"/>         	
-	<target name="findbugs" depends="jar">
-	
-	    <findbugs home="${findbugs.home}"
-	              output="xml"
-	              outputFile="${ant.project.name}/findbugs.xml" >
-	      <sourcePath path="${basedir}/src/testPack" />
-	      <class location="${output.dir}/${jarname}" />
-	    </findbugs>
-	  </target>
+           	<target name="findbugs" depends="jar">
+           		
+           	    <findbugs home="/usr/local/findbugs/lib"
+           	              output="xml:withMessages"
+           	              outputFile="${basedir}/findbugs.xml" >
+           	      <sourcePath path="${basedir}/src/testPack" />
+           	      <class location="${output.dir}/${jarname}" />
+           	    </findbugs>
+           	  </target>
+	 
 </project>
