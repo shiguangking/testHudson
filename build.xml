@@ -71,10 +71,9 @@
 	<target name="findbugs" depends="jar">
 	
 	    <findbugs home="${findbugs.home}"
-	              output="xml:withMessages"
-	              outputFile="findbugs.xml" >
-	      <auxClasspath path="${basedir}/lib/Regex.jar" />
-	      <sourcePath path="${basedir}/src/java" />
+	              output="xml"
+	              outputFile="${ant.project.name}/findbugs.xml" >
+	      <sourcePath path="${basedir}/src/testPack" />
 	      <class location="${output.dir}/${jarname}" />
 	    </findbugs>
 	  </target>
