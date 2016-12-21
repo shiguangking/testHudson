@@ -1,5 +1,8 @@
 package testPack;
 
+import java.awt.List;
+import java.lang.reflect.Array;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -8,7 +11,6 @@ public class testPack {
 	 public static void main(String args[]){  
 	        //新建一个JFrame对象frame，同时其标题栏为No Title  
 	        JFrame frame=new JFrame("No Title");  
-		 frame.setabc(";lslsl");
 	        //新建一个JLabel组件label，里面的内容为Hello world!  
 	        JLabel label=new JLabel("Hello world!");  
 	        //新建一个JPanel面板panel，上面用来摆东西  
@@ -23,6 +25,10 @@ public class testPack {
 	        //设置frame的大小为300x200，且可见默认是不可见的  
 	        frame.setSize(300,200);  
 	        frame.setVisible(true);  
+	        List ss = new List();
+	        if("ldl"=="lll"){
+	        	
+	        }
 	        //使右上角的关闭按钮生效，如果没有这句，点击右上角的关闭按钮只能关闭窗口，无法结束进程  
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 	    }  
