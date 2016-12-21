@@ -8,6 +8,7 @@ public class testPack {
 	 public static void main(String args[]){  
 	        //新建一个JFrame对象frame，同时其标题栏为No Title  
 	        JFrame frame=new JFrame("No Title");  
+		 frame.setabc(";lslsl");
 	        //新建一个JLabel组件label，里面的内容为Hello world!  
 	        JLabel label=new JLabel("Hello world!");  
 	        //新建一个JPanel面板panel，上面用来摆东西  
