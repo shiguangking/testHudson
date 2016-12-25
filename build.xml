@@ -76,5 +76,46 @@
            	      <class location="${output.dir}/${jarname}" />
            	    </findbugs>
            	  </target>
+
+
+                  <!-- - - - - - - - - - - - - - - - - - 
+        ceshi junit
+    - - - - - - - - - - - - - - - - - --> 
+  <property name="lib.dir"     value="lib"/>
+  <property name="src.dir" value="src"/>
+  <property name="test.dir" value="test"/>
+  <property name="out.dir" value="out"/>
+  <property name="class.dir" value="classes"/>
+  <target name="clean">
+    <delete dir="${out.dir}"/>
+  </target>
+  <target name="compile_test">
+    <mkdir dir="${out.dir}/${class.dir}"/>
+    <javac srcdir="${src.dir}" destdir="${out.dir}/${class.dir}"/>
+ </target>
+ <target name="compile.tests" depends="compile_test">
+     <mkdir dir="${test.dir}"/>
+
+    <mkdir dir="${out.dir}/${test.dir}"/>
+    <javac srcdir="${test.dir}" destdir="${out.dir}/${test.dir}">
+      <classpath>
+        <pathelement path="${out.dir}/${class.dir}"/>
+      </classpath>
+    </javac>
+    <junit>
+      <classpath>
+        <pathelement path="${out.dir}/${class.dir}"/>
+        <pathelement path="${out.dir}/${test.dir}"/>
+      </classpath>
+     <formatter type="plain"/>
+      <formatter type="xml"/>
+
+      <batchtest fork="yes" todir="${out.dir}">
+        <fileset dir="${src.dir}">
+          <include name="**/*Test.java"/>
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
 	 
 </project>
